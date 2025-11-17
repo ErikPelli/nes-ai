@@ -94,18 +94,18 @@ docker run -it --rm -v $PWD:/tmp -w /tmp tensorflow/tensorflow:2.20.0 python ./t
 ## Accuracy
 ```
 Epoch 47/50
-938/938 ━━━━━━━━━━━━━━━━━━━━ 2s 2ms/step - accuracy: 0.8179 - loss: 0.6117  
+938/938 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step - accuracy: 0.8172 - loss: 0.6183  
 Epoch 48/50
-938/938 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step - accuracy: 0.8215 - loss: 0.6058  
+938/938 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step - accuracy: 0.8163 - loss: 0.6213  
 Epoch 49/50
-938/938 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step - accuracy: 0.8211 - loss: 0.6056  
+938/938 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step - accuracy: 0.8164 - loss: 0.6217  
 Epoch 50/50
-938/938 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step - accuracy: 0.8187 - loss: 0.6075 
-157/157 ━━━━━━━━━━━━━━━━━━━━ 0s 1ms/step - accuracy: 0.8945 - loss: 0.3535   
-Test accuracy: 89.5%
+938/938 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step - accuracy: 0.8179 - loss: 0.6153  
+157/157 ━━━━━━━━━━━━━━━━━━━━ 0s 1ms/step - accuracy: 0.8886 - loss: 0.3672   
+Test accuracy: 88.9%
 ```
 
-Using the test data provided with the dataset we achieved an accuracy of `89.5%`, which is really not bad for such a
+Using the test data provided with the dataset we achieved an accuracy of `88.9%`, which is really not bad for such a
 small neural network. Basically, it guessed the correct digit in almost `9` out of `10` images.
 
 ## Resources

@@ -4,12 +4,12 @@ from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import Adam
-from keras.utils import to_categorical
+from keras.utils import to_categorical, set_random_seed
 
 if __name__ == "__main__":
     print("Tensorflow Version: " + tf.__version__)
     # Set random seed for reproducible results
-    tf.random.set_seed(42) # Where's my towel?
+    set_random_seed(42) # Where's my towel?
 
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
