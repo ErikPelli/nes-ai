@@ -10,15 +10,14 @@ endif()
 # Libraries header files (.h)
 set(COMMON_INCLUDES
     -I${CMAKE_CURRENT_SOURCE_DIR}/lib/neslib
-    -I${CMAKE_CURRENT_SOURCE_DIR}/lib/libfixmath
+    -I${CMAKE_CURRENT_SOURCE_DIR}/lib/libfixmath-cc65
     -I${CMAKE_CURRENT_SOURCE_DIR}/mlp
 )
 
 # Libraries source files (.c)
 set(COMMON_SOURCES
-    lib/libfixmath/fix16.c
-    lib/libfixmath/fix16_exp.c
-    lib/libfixmath/fix16_div.c
+    lib/libfixmath-cc65/libfixmath/fix16.c
+    lib/libfixmath-cc65/libfixmath/fix16_exp.c
     lib/neslib/crt0.s
     mlp/mlp.c
     mlp/weights.c
@@ -27,19 +26,23 @@ set(COMMON_SOURCES
 # Configure libfixmath compile options
 set(COMMON_DEFINES
     # cc65 doesn't have uint64_t type
-    -DFIXMATH_NO_64BIT
+    -D FIXMATH_NO_64BIT
     # libfixmath readme file says we need 32KB+80KB (112KB) of memory, we can't afford it
-    -DFIXMATH_NO_CACHE
+    -D FIXMATH_NO_CACHE
     # NES CPU doesn't have division instructions, so we disable them
-    -DFIXMATH_NO_HARD_DIVISION
+    -D FIXMATH_NO_HARD_DIVISION
     # 6502 is an 8 bit CPU, we use instructions optimized for it
-    -DFIXMATH_OPTIMIZE_8BIT
+    -D FIXMATH_OPTIMIZE_8BIT
 )
 
 add_custom_target(
     nes-ai-cli ALL
 
-    COMMAND ${CC65_COMPILER} -t nes -o nes-ai-cli.nes
+    # According to cc65 documentation:
+    # Please note that the compiler does not support the C99 standard and never will.
+    # c99 mode is actually c89 mode with a few selected C99 extensions.
+    COMMAND ${CC65_COMPILER}
+            -t nes -Os -Oi -o nes-ai-cli.nes --standard c99
             ${COMMON_INCLUDES}
             ${COMMON_DEFINES}
             ${COMMON_SOURCES}
@@ -49,5 +52,6 @@ add_custom_target(
 
     BYPRODUCTS nes-ai-cli.nes
     COMMAND_EXPAND_LISTS
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Building NES CLI ROM (nes-ai-cli.nes)"
 )
