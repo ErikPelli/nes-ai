@@ -1,6 +1,6 @@
 [submodule "lib/neslib"]
 	path = lib/neslib
-	url = https://github.com/clbr/neslib.git
+	url = https://github.com/ErikPelli/neslib.git
 [submodule "lib/libfixmath-cc65"]
 	path = lib/libfixmath-cc65
 	url = https://github.com/ErikPelli/libfixmath-cc65.git
