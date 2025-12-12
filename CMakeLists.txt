@@ -10,7 +10,7 @@ endif()
 # Libraries header files (.h)
 set(COMMON_INCLUDES
     -I${CMAKE_CURRENT_SOURCE_DIR}/lib/neslib
-    -I${CMAKE_CURRENT_SOURCE_DIR}/lib/libfixmath-cc65
+    -I${CMAKE_CURRENT_SOURCE_DIR}/lib/libfixmath-cc65/libfixmath
     -I${CMAKE_CURRENT_SOURCE_DIR}/mlp
 )
 
@@ -41,8 +41,9 @@ add_custom_target(
     # According to cc65 documentation:
     # Please note that the compiler does not support the C99 standard and never will.
     # c99 mode is actually c89 mode with a few selected C99 extensions.
+    # cc65 is like c99 mode, but additional features are enabled (e.g. itoa).
     COMMAND ${CC65_COMPILER}
-            -t nes -Os -Oi -o nes-ai-cli.nes --standard c99
+            -t nes -Oisr -o nes-ai-cli.nes --standard cc65 -C cli/nes.cfg
             ${COMMON_INCLUDES}
             ${COMMON_DEFINES}
             ${COMMON_SOURCES}
