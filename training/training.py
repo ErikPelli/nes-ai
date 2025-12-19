@@ -117,15 +117,15 @@ if __name__ == "__main__":
 
         # Convert weight to an uint32 Q16.16 HEX value, equivalent to F16() macro.
         # We do it here because cc65 doesn't support floating point operations (even in the preprocessing phase).
-        # Resulting floating point is less accurate: -0.12657789885997772 (float64) in Q16.16 becomes FFFFDF99, and if
-        # we convert it back to a float64, its value is -0.126572
+        # Resulting floating point is less accurate: -0.12657789885997772 (float32) in Q16.16 becomes FFFFDF99, and if
+        # we convert it back to a float32, its value is -0.126572
         weights_uint = []
         for weight in weights:
             if weight >= 0:
                 weight = weight * 65536.0 + 0.5
             else:
                 weight = weight * 65536.0 - 0.5
-            weight_uint = np.float64(weight).astype(np.uint32)
+            weight_uint = np.float32(weight).astype(np.uint32)
             weights_uint.append(weight_uint)
 
         weights_str = ",\n".join(f"    0x{weight_uint:08X}" for weight_uint in weights_uint)
