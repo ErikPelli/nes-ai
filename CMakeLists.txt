@@ -49,6 +49,7 @@ add_custom_target(
             ${COMMON_SOURCES}
             ${LIB_SOURCES}
             ${ASM_SOURCES}
+            cli/tileset.s
             cli/main.c
 
     BYPRODUCTS nes-ai-cli.nes
