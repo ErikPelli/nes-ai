@@ -2,8 +2,8 @@
 
 > Python + TensorFlow (Keras)
 
-Our goal is to train a basic Artificial Neural Network (`ANN`) of the `MLP` (MultiLayer Perceptron) type,
-to run it afterward on really low-end hardware.
+Our goal is to train a basic `MLP` (MultiLayer Perceptron) Artificial Neural Network (`ANN`), to run it on really
+low end hardware.
 
 MLP neural networks are trained using the backpropagation technique, and they're mainly used to classify images
 into multiple categories.
@@ -46,8 +46,8 @@ Considering `4` bytes (`32 bits`) for each floating point weight, this means tha
 size of `1.49MB`.
 Due to the hardware limitations of our NES (`40KB` cartridge: `32KB` for code and `8KB` for graphic assets, [source](https://en.wikipedia.org/wiki/Memory_management_controller_(Nintendo))),
 we can't afford to put over 1MB of constants inside it.
-Later, the 40KB limit has been extended to 1MB thanks to [Mapper chips](https://www.nesdev.org/wiki/Mapper) inside the
-cartridge, but in this experiment I'll try to avoid them.
+Later, the 40KB limit has been extended to 1MB thanks to [Mapper chips](https://www.nesdev.org/wiki/Mapper) (e.g. MMC3)
+inside the cartridge, but in this experiment I will try to avoid them, although they are quite common in NES games.
 
 I resized the images in the training dataset to `7x7` (`49` pixels) and added two hidden layers of neurons with sizes of
 `49` and `24`, keeping the output size of `10`. This reduced accuracy but also the memory required.
@@ -84,7 +84,8 @@ Does this make our AI a "toy"? Maybe, but our plan is to get it up and running, 
 
 ## Run
 ### Requirements
-- Docker, using Tensorflow CPU image
+- Docker, with Tensorflow CPU image
+
 ### Script
 Run the training script inside a docker container:
 ```shell
@@ -111,6 +112,6 @@ small neural network. Basically, it guessed the correct digit in almost `9` out 
 ## Resources
 Inspired by:
 - [TensorFlow Docs](https://www.tensorflow.org/guide/core/mlp_core)
-- [EloquentArduino Blog](https://eloquentarduino.github.io/2020/11/tinyml-on-arduino-and-stm32-cnn-convolutional-neural-network-example/).
+- [EloquentArduino Blog](https://eloquentarduino.github.io/2020/11/tinyml-on-arduino-and-stm32-cnn-convolutional-neural-network-example/)
 - [Oddly Satisfying Deep Learning](https://pythonandml.github.io/dlbook/content/multilayer_perceptrons/mlp_keras.html)
 - [V7Labs Blog](https://www.v7labs.com/blog/neural-networks-activation-functions)
