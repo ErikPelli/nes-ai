@@ -50,7 +50,7 @@ void main() {
     // Normalize input array from [0, 10] range to [0, 1]
     for (i = 0; i < MLP_INPUT_SIDE; i++) {
         for (j = 0; j < MLP_INPUT_SIDE; j++) {
-            int intValue = (int) _data_input[i][j];
+            intValue = (int) _data_input[i][j];
             _data_input[i][j] = fix16_div(fix16_from_int(intValue), fix16_ten);
         }
     }
